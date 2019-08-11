@@ -1,0 +1,6 @@
+{
+	"status": 0,
+	"message": [
+		{"title":"过得好的女人，身上往往有这些特征","name":"蓓蓓情","num":"3.2","content":"邮件列表证实最近发布了 Bash-5.0。而且，令人兴奋的是它还有新的功能和变量。如果你一直在使用 Bash 4.4.XX，那么你一定会喜欢 Bash 的第五个主要版本。第五个版本侧重于新的 shell 变量和许多重大漏洞修复。它还引入了一些新功能，以及一些与 bash-4.4 不兼容的更改。","content1":"globasciiranges 这个 shell 选项现在默认启用。可以在配置时默认关闭它。Bash-4.4 和 Bash-5.0 之间有哪些变化？其更新日志提到了不兼容的更改和所支持的 readline 版本历史记录。它是这么说的：bash-4.4 和 bash-5.0 之间存在一些不兼容的变化。尽管我已经尽量最小化兼容性问题，但是对 nameref 变量解析的更改意味着对变量名引用的某些使用会有不同的行为。默认情况下，如果启用了扩展调试模式，shell 仅在启动时设置 BASH_ARGC 和 BASH_ARGV。它被无条件地设置是一个疏忽，并且在脚本传递大量参数时会导致性能问题。如果需要，可以将 Bash 链接到已安装的 Readline 库，而不是 lib/readline 中的私有版本。","content2":"现在可以使用 -d start-end 删除指定范围的 history 条目。如果启用了作业控制的非交互式 shell 检测到前台作业因 SIGINT 而死亡，则其行为就像接收到 SIGINT 一样。BASH_ARGV0：一个新变量，扩展为 $0，并在赋值时设置为 $0。要查看完整的更改和功能列表，请参阅邮件列表文章。","img":"https://upload.jianshu.io/users/upload_avatars/16050459/52fec6c2-3d4a-4ea3-b234-c3e592c65406.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96"}
+	]
+}

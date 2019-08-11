@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="2.6.7vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="button" @click="aaa" value="refs传值">
+		<p ref="ccc">我去你大爷的哦</p>
+		<con1 ref="bbb"></con1>
+	</div>
+	<script>
+		var con1 = {
+			template: "<h1>哈哈哈哈</h1>",
+			methods:{
+				show(){
+					console.log("这是子组件")
+				}	
+			}
+		}
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				msg: "今天天气还不错哦"
+			},
+			methods: {
+				aaa(){
+					this.$refs.bbb.show()
+				}
+			},
+			components:{
+				con1,
+			}
+		})
+	</script>
+</body>
+</html>

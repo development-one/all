@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>find寻找符合条件的第一个数</title>
+	<style>
+		h1 span{
+			color: pink;
+		
+			transform: translate(20px,40px);
+			display: block;
+			transition: all 2s;
+		}
+		.header:hover span{
+			color: lightgreen;
+			transform: rotateY(30deg);
+			transform: translate(0px,0px);
+			
+		}
+	</style>
+</head>
+<body>
+	<div class="header" style="width:100%;display:flex;justify-content: center;">
+		<h1 style="font-size:40px">你好中国</h1>
+	</div>
+	<script>
+		let x = document.querySelector("h1")
+		let span = x.textContent;
+		x.innerHTML = [...span].map(item=>{
+			return `<span>${item}</span>`
+		}).join("")
+		
+	</script>
+</body>
+</html>

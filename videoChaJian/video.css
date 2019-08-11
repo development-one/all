@@ -1,0 +1,152 @@
+/*
+* @Author: lenovo
+* @Date:   2019-03-23 13:53:17
+* @Last Modified by:   lenovo
+* @Last Modified time: 2019-03-24 22:04:14
+*/
+@font-face {
+  	font-family: 'iconfont';
+  	src: url('./wordFont/videoFont/iconfont.eot');
+  	src: url('./wordFont/videoFont/iconfont.eot?#iefix') format('embedded-opentype'),
+      	url('./wordFont/videoFont/iconfont.woff2') format('woff2'),
+      	url('./wordFont/videoFont/iconfont.woff') format('woff'),
+      	url('./wordFont/videoFont/iconfont.ttf') format('truetype'),
+      	url('./wordFont/videoFont/iconfont.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 36px;
+  color: white;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  resize: none;
+}
+.h5Video{
+	width: 1000px;
+	height: 500px;
+	background: rgba(0,0,0,0.8);
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+	cursor: pointer;
+}
+video{
+	margin: 0;
+	padding: 0;
+	display: none;
+	margin: 0 auto;
+	cursor: pointer;
+}
+.playControl{
+	width: 100%;
+	height: 50px;
+	background: linear-gradient(rgba(255,255,255,0.2),rgba(0,0,0,0.5));
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	cursor: pointer;
+/* 	display: none; */
+}
+.h5Video:hover .playControl{
+	display: block;
+}
+.playControl .play{
+	position: absolute;
+	bottom: 5px;
+	left: 10px;
+	user-select: none;
+}
+.playControl .full{
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	user-select: none;
+}
+.playControl .voice{
+	position: absolute;
+	bottom: 12px;
+	right: 115px;
+	font-size: 24px;
+	user-select: none;
+}
+.playControl .voiceProcess{
+	width: 60px;
+    height: 4px;
+    background: #ccc;
+    position: absolute;
+    bottom: 23px;
+    right: 50px;
+    z-index: 10;
+}
+.playControl .voiceBar{
+	width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    z-index: 999;
+    padding-right: 12px;
+    box-sizing: border-box;
+}
+.playControl .voiceBall{
+	width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    bottom: -4px;
+    right: 0px;
+    z-index: 11;
+}
+.playControl .voiceCurrent{
+	width: 100%;
+	height: 100%;
+	background: skyblue;
+	position: absolute;
+    bottom: 0px;
+    left: 0;
+
+}
+.process{
+	width: 620px;
+	height: 5px;
+	background: white;
+	position: absolute;
+	border-radius: 15px;
+	left: 86px;
+	bottom: 22px;
+}
+.current{
+	width: 0;
+	height: 100%;
+	background: skyblue;
+	border-radius: 15px;
+}
+.bar{
+	width: 620px;
+	height: 100%;
+	border-radius: 15px;
+	float: left;
+	position: absolute;
+	z-index: 999;
+}
+.ball{
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: skyblue;
+	position: absolute;
+	bottom: -3px;
+	left: 0px;
+	z-index: 11;
+}
+.time{
+	width: 150px;
+	font-size: 14px;
+	position: absolute;
+	right: 140px;
+	bottom: 16px;
+	color: white;
+	user-select: none;
+}

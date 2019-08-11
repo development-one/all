@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="2.6.7vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="button" value="点击" @click="flag=!flag">
+		<transition 
+			@before-enter="be"
+			@enter="be1"
+			@after-enter="be2"
+			>
+					<div style="width:30px;height:30px;background-color:red;border-radius: 50%;margin-top:10px" v-show="flag"></div>
+			</transition>
+	
+	</div>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				flag: false,
+			},
+			methods: {
+				be(el){
+					el.style.transform= 'translate(0,0)'
+				},
+				be1(el,done){
+					el.offsetWidth
+					el.style.transform= 'translate(100px,300px)'
+					el.style.transition = 'all 1s ease'
+					done()
+				},
+				be2(el){
+					this.flag=!this.flag
+				}
+			}
+		})
+	</script>
+</body>
+</html>

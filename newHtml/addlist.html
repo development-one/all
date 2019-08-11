@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加list列表</title>
+	<style>
+		*{
+			box-sizing: border-box;
+		}
+		.container{
+			width: 40%;
+			margin: 100px auto;
+			background: lightgreen;
+		}
+		.header{
+			height: 100px;
+			text-align: center;
+			background: lightblue;
+			overflow: hidden;
+		}
+		.header p {
+			font-size: 20px;
+			margin: 10px auto;
+		}
+		.header input{
+			width: 50%;
+			height: 30px;
+			border: 1px solid #ccc;
+			font-size: 15px;
+			padding-left: 10px;
+			box-sizing: border-box;
+			vertical-align: middle;
+		}
+		.header button{
+			width: 10%;
+			height: 30px;
+		}
+		.content{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.content li{
+			padding: 20px 20px 20px 30px;
+			box-sizing: border-box;
+			background: #f9f9f9;
+			cursor: pointer;
+			position: relative;
+
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+		}
+		 li.active{
+			background: #888!important;
+  			color: #fff;
+  			text-decoration: line-through;
+		}
+
+		.content li:nth-child(odd){
+			background: #eee;
+		}
+		.content li:hover{
+			background: #ddd;
+		}
+		.content li.active::before{
+			content: '√';
+			position: absolute;
+			left: 10px;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.close {
+			height: 100%;
+  			position: absolute;
+  			right: 0;
+  			top: 0;
+  			padding: 16px;
+  			line-height: ;
+		}
+		.close:hover {
+  			background-color: #f44336;
+  			color: white;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<p>My To Do List</p>
+			<input type="text" placeholder="Title">
+			<button onclick="newElement()">Add</button>
+		</div>
+		<ul class="content">
+			<li class="active">aaa</li>
+			<li>qqqq</li>
+			<li>wwww</li>
+			<li>eeee</li>
+			<li>cccc</li>
+			<li>bbbb</li>
+			<li>ssss</li>
+		</ul>
+	</div>
+	<script>
+		// 添加close
+		var myNodelist = document.getElementsByTagName("LI");
+		var i;
+		for (i = 0; i < myNodelist.length; i++) {
+  			var span = document.createElement("SPAN");
+  			var txt = document.createTextNode("\u00D7");
+  			span.className = "close";
+  			span.appendChild(txt);
+  			myNodelist[i].appendChild(span);
+		}
+
+		// 点击close关闭li
+		var close = document.getElementsByClassName("close");
+		for(var i=0;i<close.length;i++){
+			close[i].onclick = function(){
+				this.parentElement.style.display = "none";
+			}
+		}
+
+		//点击li添加class
+		var list = document.querySelector("ul");
+		list.addEventListener('click',function(ev){
+			if(ev.target.tagName === "LI"){
+				ev.target.classList.toggle('active')
+			}
+		},false)
+
+		// 添加list元素
+		function newElement() {
+  			var li = document.createElement("li");
+  			var inputValue = document.querySelector("input").value;
+  			var t = document.createTextNode(inputValue);
+  			li.appendChild(t);
+  			if(inputValue === ""){
+				alert("You must write something!");
+  			}else{
+  				document.querySelector("ul").appendChild(li);
+  			}
+  			document.querySelector("input").value = "";	
+			
+			// 添加close
+			var myNodelist = document.getElementsByTagName("LI");
+			var i;
+			for (i = 0; i < myNodelist.length; i++) {
+  				var span = document.createElement("SPAN");
+  				var txt = document.createTextNode("\u00D7");
+  				span.className = "close";
+  				span.appendChild(txt);
+  				myNodelist[i].appendChild(span);
+			}
+	
+			// 点击close关闭li
+			var close = document.getElementsByClassName("close");
+			for(var i=0;i<close.length;i++){
+				close[i].onclick = function(){
+					this.parentElement.style.display = "none";
+				}
+			}
+		}
+	</script>
+</body>
+</html>

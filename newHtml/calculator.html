@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算器</title>
+	<style>
+		.container{
+			width: 400px;
+			margin: 100px auto;
+			background-color: #495678;
+			box-shadow: 4px 4px #3d4a65;
+			padding: 40px;
+			border-radius: 50px;
+		}
+
+		/* 输入总框 */
+		input{
+			border: 0;
+			width: 18%;
+			height: 40px;
+			margin: 10px;
+			cursor: pointer;
+			font-size: 20px;
+			outline: none;
+			border-radius: 25px;
+			color: #dededc;
+		}
+
+		/* 操作按钮 */
+		.operator{
+			background-color: #dededc;
+			box-shadow: 0 5px #bebebe;
+			color: #72778b;
+		}
+		.operator:active{
+			box-shadow: 0 2px #bebebe;
+			transform: translateY(2px)
+		}
+
+		/* 文本显示框 */
+		.text{
+			width: 66%;
+			height: 35px;
+			outline: none;
+			background-color: #98d1dc;
+			box-shadow: inset 6px 6px 0px #3facc0;
+			outline: none;
+			color: #dededc;
+			font-size: 20px;
+			height: 47px;
+			text-align: right;
+			padding-right: 10px;
+			margin-left: 10px;
+			cursor: text;
+		}
+
+		/* 数字 */
+		.number {
+			background-color: #72778b;
+			box-shadow: 0 5px #5f6680;
+			color: #dededc;
+		}
+		.number:active{
+			box-shadow: 0 2px #5f6680;
+			transform: translateY(2px)
+		}
+
+		/* 其他 */
+		.other {
+			background-color: #e3844c;
+			box-shadow: 0 5px #e76a3d;
+			color: #dededc;
+		}
+		.other:active{
+			box-shadow: 0 2px #e76a3d;
+			transform: translateY(2px)
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<input type="button" value="c" class="other" id="clear">
+		<input type="text" class="text" readonly id="display">
+		<br>
+		<input type="button" value="7" class="number" onclick="get(this.value);">
+		<input type="button" value="8" class="number" onclick="get(this.value);">
+		<input type="button" value="9" class="number" onclick="get(this.value);">
+		<input type="button" value="+" class="operator" onclick="get(this.value);">
+		<br>
+		<input type="button" value="4" class="number" onclick="get(this.value);">
+		<input type="button" value="5" class="number" onclick="get(this.value);">
+		<input type="button" value="6" class="number" onclick="get(this.value);">
+		<input type="button" value="*" class="operator" onclick="get(this.value);">
+		<br>
+		<input type="button" value="1" class="number" onclick="get(this.value);">
+		<input type="button" value="2" class="number" onclick="get(this.value);">
+		<input type="button" value="3" class="number" onclick="get(this.value);">
+		<input type="button" value="-" class="operator" onclick="get(this.value);"> 
+		<br>
+		<input type="button" value="0" class="number" onclick="get(this.value);">
+		<input type="button" value="." class="operator" onclick="get(this.value);">
+		<input type="button" value="/" class="operator" onclick="get(this.value);">
+		<input type="button" value="=" class="other" onclick="calculates();">
+		<br>
+	</div>
+	<script>
+		var x = document.getElementById("display");
+		// 清空value
+		document.getElementById("clear").addEventListener("click",function(){
+			x.value = "";
+		})
+		// input框获取数值
+		function get(value){
+			x.value += value;
+		}
+		// 计算输入框里的值
+		function calculates(){
+			var result = 0;
+			result = x.value;
+			x.value = "";
+			x.value = eval(result);
+		}
+	</script>
+</body>
+</html>

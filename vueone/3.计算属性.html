@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./2.6.7vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{message}}</p>
+		<p>{{comput}}</p>
+		<p>{{mounted}}</p>
+	<input type="text" v-model="message">
+	</div>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				message: "这是计算机属性"
+			},
+			computed: {
+				message:function(){
+					return this.message.split("").reverse().join("")
+				},
+				mounted:function(){
+					return this.message
+				}
+			}
+		})
+	</script>
+</body>
+</html>

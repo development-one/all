@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="2.6.7vue.js"></script>
+	<script src="1.5.1vue-resource.js"></script>
+	<style>
+		img{
+			width: 100px;
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<input type="button" @click="res" value="点击">
+        <ul>
+            <li v-for="item in list" :key="item.id">
+                {{item.id}}---{{item.title}}--<img :src="item.imgurl" alt="">
+            </li>
+        </ul>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+                list: [""],
+			},
+			methods: {
+				res(){
+					/*this.$http.get("./public/api/resource.json",{params:{a:1,b:2}}).then(function(str){
+						console.log(str)
+					})*/
+                    this.$http.post("./public/api/resource.json",{},{emulateJSON:true}).then(function(str){
+                        this.list = str.body.data.vue1
+                    },function(){
+                        console.log(str.status)
+                    })
+				}
+			}
+		})
+	</script>
+</body>
+</html>

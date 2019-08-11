@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<script src="2.6.7vue.js"></script>
+	<style>
+		li{
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<con1 @parent="local"></con1>
+		<ul class="list-group">
+			<li v-for="item in list" :key="item.id" class="list-group-item">
+			{{item.content}}
+			<span class="badge">{{item.name}}</span>
+			<a href=""  style="float:right;margin-right: 20px" @click.prevent="sc(item.id)">删除</a>
+		</li>
+		</ul>
+	</div>
+	<template id="con1">
+		<div class="panel-body from-inline">
+			<form action="">
+				<label>姓名:</label>
+				<input type="text" class="form-control" v-model="name">
+	
+				<label>内容:</label>
+				<input type="text" class="form-control" v-model="content">
+	
+				<input type="submit" value="添加" class="btn btn-primary" 	@click="add" style="margin-top: 10px">
+				<input type="submit" value="全部删除" class="btn btn-danger" 	@click="dla" style="margin-top: 10px">
+				</form>
+		</div>
+	</template>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data:{
+				list: [
+					{id:1,name:"小李",content:"我要升级"},
+					{id:2,name:"小黄",content:"你的装备太差了哦"},
+					{id:3,name:"小许",content:"你们的装备都很差，只有我的最牛好吧"}
+				]
+			},
+			created(){
+				this.local()
+			},
+			methods:{
+				local(){
+					this.list = JSON.parse(localStorage.getItem("cmt") || '[]')
+				},
+				sc(el){
+					this.list.some((item,i)=>{
+						if(item.id == el){
+							var list = JSON.parse(localStorage.getItem('cmt') || '[]')
+							list.splice(i,1)
+							localStorage.setItem('cmt',JSON.stringify(list))
+							this.local();
+							return true;
+						}
+					})
+				}
+			},
+			components:{
+				con1:{
+					template: "#con1",
+					data(){
+						return{
+							name: "",
+							content: ""
+						}
+					},
+					methods:{
+						add(){
+							var comment = {id: Date.now(), name: this.name, content: this.content}
+							var list = JSON.parse(localStorage.getItem('cmt') || '[]')
+							list.unshift(comment)
+							localStorage.setItem('cmt',JSON.stringify(list))
+							this.name = this.content = ""
+							this.$emit("parent")
+						},
+						dla(){
+							localStorage.removeItem('cmt')
+							this.$emit("parent")
+						}
+
+				}
+			}
+		}
+	 })
+	</script>
+</body>
+</html>

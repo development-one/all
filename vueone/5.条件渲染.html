@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./2.6.7vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-if="abc">
+		{{abc}}&nbsp;&nbsp;&nbsp;&nbsp;Now you see me
+	</div>
+	<div v-else>
+  		{{abc}}&nbsp;&nbsp;&nbsp;&nbsp;Now you don't
+	</div>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+
+			},
+			computed: {
+				abc:function(){
+					return Math.random()>0.5
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tabel选项卡</title>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<style>
+	.container{
+		width: 500px;
+		margin: 100px auto;
+		background: pink;
+	}
+	.title{
+		margin: 0;
+		list-style: none;
+		width: 100%;
+		display: flex;
+		padding: 0;
+	}
+	.title li{
+		line-height: 40px;
+		text-align: center;
+		flex: 1;
+		background: lightgreen;
+		cursor: pointer;
+	}
+	.content{
+		width: 100%;
+		height: 360px;
+		display: none;
+	}
+	.content img{
+		width: 100%;
+		height: 100%;
+	}
+	.show{
+		display: block;
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="title">
+			<li style="background-color: orange">H5+CSS3</li>
+			<li>Jquery</li>
+			<li>Javascript</li>
+			<li>Php</li>
+		</ul>
+		<div class="content show">
+			<img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2411451674,3736198300&fm=27&gp=0.jpg" alt="">
+		</div>
+		<div class="content">
+			<img src="http://img0.imgtn.bdimg.com/it/u=1521302904,61692540&fm=26&gp=0.jpg" alt="">
+		</div>
+		<div class="content">
+			<img src="http://img0.imgtn.bdimg.com/it/u=3135301213,2966035191&fm=26&gp=0.jpg" alt="">
+		</div>
+		<div class="content">
+			<img src="http://img0.imgtn.bdimg.com/it/u=1085536118,3605158166&fm=26&gp=0.jpg" alt="">
+		</div>
+	</div>
+	<script>
+		$(function(){
+			$(".title>li").mouseenter(function(){
+				$(this).css({"background":"orange"})
+				$(this).siblings().css({"background":"lightgreen"})
+				var index = $(this).index();
+				var $la = $(".content").eq(index);
+				$la.addClass("show");
+				$la.siblings().removeClass("show");
+			})
+		})	
+	</script>
+</body>
+</html>

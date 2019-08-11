@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		table{
+			border: 1px solid black;
+			text-align: center;
+			border-collapse: collapse;
+		}
+		thead{
+			background: lightgreen;
+		}
+		td{
+			padding: 10px;
+		}
+		tr:nth-child(2n){
+			background: #ccc;
+		}
+		form{
+			padding: 10px;
+		}
+		input{
+			outline: none;
+			padding: 10px;
+			font-size: 15px;
+		}
+		input[type=submit]{
+			background: lightgreen;
+			font-size: 16px;
+			border-radius: 5px;
+		}		
+	</style>
+</head>
+<body>
+	<table border=1 width=600 >
+		<caption>用户表</caption>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>name</th>
+				<th>phone</th>
+			</tr>
+		</thead>
+		<tbody id="tbody">
+			<tr>
+				<td>1</td>
+				<td>小不点</td>
+				<td>1213213213</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>无极</td>
+				<td>1213213213</td>
+			</tr>
+		</tbody>
+	</table>
+	<form action="">
+		<input type="text" placeholder="ID" id="id">
+		<input type="text" placeholder="name" id="name">
+		<input type="text" placeholder="phone" id="phone">
+		<input type="submit" onclick="add()">
+	</form>	
+	<script>
+		function add(){
+			var x = document.getElementById('tbody');
+			var a = document.getElementById('id');
+			var b = document.getElementById('name');
+			var c = document.getElementById('phone');
+
+			var para = document.createElement('td');
+			var d = document.createElement('tr');
+			
+			para.appendChild(a);
+			
+			d.appendChild(para);
+			x.appendChild(d);
+		}
+	</script>
+</body>
+</html>

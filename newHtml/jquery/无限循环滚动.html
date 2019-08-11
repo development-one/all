@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无限循环滚动</title>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+	<style>
+		.container{
+			width: 600px;
+			height: 200px;
+			margin: 100px auto;
+			overflow: hidden;
+			background: #000;
+		}
+		ul{
+			width: 1200px;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: flex;		
+		}
+		img{
+			width: 300px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="content">
+			<li>
+				<img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2411451674,3736198300&fm=27&gp=0.jpg" alt="">
+			</li>
+			<li>
+				<img src="http://img0.imgtn.bdimg.com/it/u=1521302904,61692540&fm=26&gp=0.jpg" alt="">
+			</li>
+			<li>
+				<img src="http://img0.imgtn.bdimg.com/it/u=3135301213,2966035191&fm=26&gp=0.jpg" alt="">
+			</li>
+			<li>
+				<img src="http://www.ttpaihang.com/image/vote/u140309212843628701.jpg" alt="">
+			</li>
+			<li>
+				<img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2411451674,3736198300&fm=27&gp=0.jpg" alt="">
+			</li>
+			<li>
+				<img src="http://img0.imgtn.bdimg.com/it/u=1521302904,61692540&fm=26&gp=0.jpg" alt="">
+			</li>
+		</ul>
+	</div>
+	<script>
+		$(function(){
+			var offset = 0;
+			var timer;
+			autoPlay();
+			function autoPlay(){
+				 timer = setInterval(function(){
+					offset -= 3; 
+					if(offset<=-1200){
+						offset = 0;
+					}
+					$("ul").css({"marginLeft":offset})
+				},50)
+			}
+			$("li").hover(function(){
+				clearInterval(timer);
+				$(this).siblings().fadeTo(100,0.5)
+				$(this).fadeTo(100,1);
+			},function(){
+				autoPlay();
+				$("li").fadeTo(100,1);
+			})	
+		})
+	</script>
+</body>
+</html>

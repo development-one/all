@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="checkbox" vlaue="篮球" name="item">篮球
+	<input type="checkbox" vlaue="足球" name="item">足球
+	<input type="checkbox" vlaue="乒乓球" name="item">乒乓球
+	<input type="checkbox" vlaue="羽毛球" name="item">羽毛球
+	<div>
+		<input type="checkbox" id="all">全选
+	</div>
+	<script>
+		window.onload = function(){
+			var item = document.getElementsByName("item")
+			var checkAll = document.getElementById("all")
+			var checkUnall = document.getElementById("unall")
+			checkAll.onclick = function(){
+				for(i=0;i<item.length;i++){
+					item[i].checked = checkAll.checked
+				}				
+			}
+			for(i=0; i<item.length; i++){
+
+				item[i].onclick = function(){
+					checkAll.checked = true
+					for(j=0; j<item.length; j++){
+						if(!item[j].checked){
+							checkAll.checked = false
+						}
+					}
+				}
+			}
+		}
+	</script>
+</body>
+</html>

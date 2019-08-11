@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../2.6.7vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div></div>
+		<video1></video1>
+	</div>
+	<template id="video">
+		<div class="video">
+			wo qu {{xixi}}
+		</div>
+	</template>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				msg: "aaaa"
+			},
+			methods:{
+
+			},
+			components: {
+				video1: {
+					template: "#video",
+					data(){
+						return {
+							xixi:"aaaavvvv"
+						}
+					},
+					methods:{
+
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

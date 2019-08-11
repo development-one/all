@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="2.6.7vue.js"></script>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- <div @click.capture="cli" style="width:200px;height:200px;background:pink">
+			<button @click.stop.once="cli2">点击</button>
+			<a href="https://www.bilibili.com/video/av36650577/?p=12" @click.prevent>a连接的事件修饰符</a>
+		</div> -->
+
+			<div @click.self="cli" style="width:200px;height:200px;background:pink">
+			<button @click="cli2">点击</button>
+		</div>
+	</div>
+	<script>
+		new Vue({
+			el: "#app",
+			data: {
+			
+			},
+			methods: {
+				cli2(){
+					console.log("这是触发了Button的事件")
+				},
+				cli(){
+					console.log("这是触发了Div的事件")
+				},
+			},
+			computed: {
+
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>折叠菜单</title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<style>
+	*{
+		list-style: none;
+	}
+	li{
+		cursor: pointer;
+	}
+	.container{
+		width: 400px;
+		margin: 100px auto;
+		background: pink;
+	}	
+	.menu{
+		width: 100%;
+		border: 1px solid #CCC;
+		margin: 0;
+		padding: 0;
+	}
+	.level1{
+		width: 100%;
+		font-size: 20px;
+		border-bottom: 1px solid #ccc;
+	}
+	.head{
+		width: 100%;
+		padding: 15px;
+		box-sizing: border-box;
+		background: lightgreen;
+	}
+	.level1 .icon{
+		float: right;
+	}
+	.secondLevel{
+		padding: 0;
+		display: none;
+	}
+	.secondLevel li{
+		padding: 10px 10px 10px 20px;
+		background: orange;
+		border-bottom: 1px solid #ccc;
+	}
+	.current{
+		transform: rotate(90deg);
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="menu">
+			<li class="level1">
+				<div class="head">
+					<span class="title">一级菜单</span>
+					<span class="icon">></span>
+				</div>				
+				<ul class="secondLevel">
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</li>
+			<li class="level1">
+				<div class="head">
+					<span class="title">一级菜单</span>
+					<span class="icon">></span>
+				</div>				
+				<ul class="secondLevel">
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</li>
+			<li class="level1">
+				<div class="head">
+					<span class="title">一级菜单</span>
+					<span class="icon">></span>
+				</div>				
+				<ul class="secondLevel">
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</li>
+			<li class="level1">
+				<div class="head">
+					<span class="title">一级菜单</span>
+					<span class="icon">></span>
+				</div>				
+				<ul class="secondLevel">
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+					<li>二级菜单</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<script>
+		$(function(){
+			$(".level1").click(function(){
+				$(this).children(".secondLevel").stop().slideToggle("slow");
+				$(this).find(".icon").toggleClass("current")
+				$(this).siblings().children(".secondLevel").slideUp();
+				$(this).siblings().find(".icon").removeClass("current");
+
+			})
+		})
+	</script>
+</body>
+</html>

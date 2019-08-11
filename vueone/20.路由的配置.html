@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="2.6.7vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<style>
+		.router-link-active,.myactive{
+			color: skyblue;
+			font-size: 20px;
+		}
+		.aaa:hover{
+			color: pink;
+		}
+		.v-enter,
+		.v-leave-to{
+			opacity: 0;
+			transform: translateX(100px)
+		}
+		.v-enter-active,
+		.v-leave-active{
+			transition: all 1s ease;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<router-link to="/login?id=11" class="aaa">登录</router-link>
+		<router-link to="/zhuce">注册</router-link>
+		<transition mode="out-in" >
+			<router-view></router-view>
+		</transition>
+	</div>
+	<template id="tem1">
+		<div>
+			<h1>我是登录组件---{{$route.query.id}}</h1>
+		</div>
+	</template>
+	<template id="tem2">
+		<div>
+			<h1>我是注册组件</h1>
+		</div>
+	</template>
+	<script>
+		var con1 = {
+			template: "#tem1"
+		}
+		var con2 = {
+			template: "#tem2"
+		}
+		var rout = new VueRouter({
+			routes:[
+				{path:"/",redirect:"/login"},
+				{path:"/login",component:con1},
+				{path:"/zhuce",component:con2}
+			],
+			linkActiveClass: 'myactive'
+		})
+		var vm = new Vue({
+			el: "#app",
+			data: {},
+			router: rout
+		})
+	</script>
+</body>
+</html>

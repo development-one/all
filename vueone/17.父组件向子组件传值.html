@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./2.6.7vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<com1 v-bind:parentmsg="msg"></com1>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				msg: "又是新的一天"
+			},
+			components: {
+				com1: {
+					data(){
+						return {
+							titile: "123",
+							content: "aaa",
+							abc: this.parentmsg
+						}
+					},
+					template: "<h1>行了好吧{{parentmsg}}</h1>",
+					props: ['parentmsg'],
+				}
+			}
+		})
+	</script>
+</body>
+</html>

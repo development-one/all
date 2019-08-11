@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹窗2</title>
+	<style>
+		.a{
+			color: lightgreen;
+		}
+	</style>
+</head>
+<body>
+	<div class="abc">年后偶爱</div>
+	<button onclick="aa()">添加a类</button>
+	<script>
+		function aa(){
+			var x =  document.getElementsByTagName('div')[0];
+			x.classList.toggle('a');
+		}
+	</script>
+</body>
+</html>

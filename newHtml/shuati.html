@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>url字符串解析成对象</title>
+</head>
+<body>
+	<script>
+		function sp(res){
+			var ab = res
+			var x = ab.split("&&")
+			var bbc = {}
+			x.forEach(item=>{
+				var arr = item.split("=")
+				bbc[arr[0]] = arr[1]
+			})
+			console.log(bbc)
+		}
+		var abc = "asda=saa&&csda=sadasda123123"
+		sp(abc)
+	</script>
+</body>
+</html>

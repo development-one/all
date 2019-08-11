@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<a @click="doSomething"  :title="nei">大啊啊啊啊</a>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				nei: "hehe"
+			},
+			methods: {
+				doSomething:function(){
+					alert("aaa")
+				}
+			}
+
+		})
+	</script>
+</body>
+</html>

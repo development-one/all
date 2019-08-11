@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Array属性构造器</title>
+</head>
+<body>
+	<div class="demo">
+		数组属性构造器
+	</div>
+	<button>点击</button>
+	<script>
+		Array.prototype.Mypro = function(){
+			for(var i=0; i<this.length; i++){
+				this[i] = this[i].toUpperCase()
+			}
+		}
+		let x = document.querySelector("Button")
+		let y = document.querySelector(".demo")
+		var arr1 = ["nike","babgy","Jasd"];
+		arr1.Mypro()
+		x.onclick = function(){
+			y.innerHTML= arr1
+		}
+	</script>
+</body>
+</html>

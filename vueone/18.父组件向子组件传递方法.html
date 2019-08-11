@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./2.6.7vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<com1 @ff="show"></com1>
+	</div>
+	<template id="pp1">
+		<div>
+			<input type="button" value="传值" @click="cz">
+			<h1>你好我是子组件pp1哦</h1>
+		</div>
+	</template>
+	<script>
+		var comcom = {
+			template: "#pp1",
+			data(){
+				return {
+					text1:"我是子组件的值"
+				}
+			},
+			methods:{
+				cz(){
+					this.$emit("ff",this.text1)
+				}
+			}
+		}
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				text2: null,
+			},
+			methods: {
+				show(el){
+					console.log("父组件向子组件传了值"+"----"+el)
+					this.text2 = el
+					console.log(this.text2)
+				}
+			},
+			components:{
+				com1:comcom
+			}
+		})
+	</script>
+</body>
+</html>

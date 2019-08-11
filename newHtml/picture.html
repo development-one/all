@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+	.clearfix:after{
+		content: '.';
+		height: 0;
+		display: block;
+		visibility: hidden;
+		clear: both;
+	}
+	.clearfix{
+		*zoom: 1;
+	}
+	p{
+		text-align: center;
+		font-size: 30px;
+		font-weight: bold;
+	}
+	.container .image{
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+	}
+	.container .image img{
+		width: 260px;
+		height: 200px;
+	}
+	.container .image img:hover{
+		box-shadow: 3px 3px 10px 2px #ccc;
+		cursor: pointer;
+	}
+	/* 弹出框样式 */
+	.container2{
+		background: #000;
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		left: 0;
+		top: 0;
+		overflow: auto;
+		padding: 0 100px 0 100px;
+		box-sizing: border-box;
+		display: none;
+	}
+	.container2 .clo{
+		font-size: 50px;
+		float: right;
+		cursor: pointer;
+		color: white;
+	}
+	.container2 .clo:hover{
+		color: #ccc;
+	}
+	.container2 .parmary{
+		width: 100%;
+		height: 70%;
+		margin: 100px auto 0 auto;
+		position: relative;
+	}
+	.container2 .parmary img{
+		width: 100%;
+		height: 100%;
+	}
+	.container2 p{
+		color: white;
+		margin: 30px;
+	}
+	.container2 .list{
+		width: 100%;
+		display: flex;
+	}
+	.container2 .list img{
+		width: 25%;
+		height: 25%;
+		cursor: pointer;
+		opacity: 0.6;
+	}
+	.container2 .list img:hover{
+		opacity: 1;
+	}
+	.active{
+		opacity: 1!important;
+	}
+	.pervious,.after{
+		color: white;
+		font-size: 40px;
+		font-weight: bold;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 40px;
+		height: 60px;
+	}
+	.pervious:hover,.after:hover{
+		background: #999;
+		cursor: pointer;
+	}
+	.pervious{
+		left: 0;
+	}
+	.after{
+		right: 0;
+	}
+</style>
+</head>
+<body>
+<div class="container">
+	<p>Lightbox</p>
+	<div class="image">
+		<img src="http://static.runoob.com/images/demo/demo1.jpg" alt="" onclick="openModal();currentSlide(1)">
+		<img src="http://static.runoob.com/images/demo/demo2.jpg" alt="" onclick="openModal();currentSlide(2)">
+		<img src="http://static.runoob.com/images/demo/demo3.jpg" alt="" onclick="openModal();currentSlide(3)">
+		<img src="http://static.runoob.com/images/demo/demo4.jpg" alt="" onclick="openModal();currentSlide(4)">
+	</div>
+</div>
+<div class="container2">
+	<span class="clo" onclick="shut()">&times;</span>
+	<div class="parmary">
+	<img src="http://static.runoob.com/images/demo/demo1.jpg" alt=""  class="mySlides">
+	<img src="http://static.runoob.com/images/demo/demo2.jpg" alt=""  class="mySlides">
+	<img src="http://static.runoob.com/images/demo/demo3.jpg" alt=""  class="mySlides">
+	<img src="http://static.runoob.com/images/demo/demo4.jpg" alt=""  class="mySlides">
+	<span class="pervious" onclick="plusSlides(-1)"><</span>
+	<span class="after" onclick="plusSlides(1)">></span>
+	</div>
+	<p class="info">Nature and sunrise</p>
+	<div class="list">
+		<img src="http://static.runoob.com/images/demo/demo1.jpg" alt="asd" onclick="currentSlide(1)" class="demo active">
+		<img src="http://static.runoob.com/images/demo/demo2.jpg" alt="222" onclick="currentSlide(2)" class="demo active">
+		<img src="http://static.runoob.com/images/demo/demo3.jpg" alt="aaa" onclick="currentSlide(3)" class="demo active">
+		<img src="http://static.runoob.com/images/demo/demo4.jpg" alt="dds" onclick="currentSlide(4)" class="demo active">
+	</div>
+</div>
+<script>
+	var x = document.querySelector(".container2")
+	function openModal(){
+		x.style.display = "block";
+	}
+	function shut(){
+		x.style.display = "none";
+	}
+
+var slideIndex = 1;
+showSlide(slideIndex);
+function plusSlides(n){
+	showSlide(slideIndex += n)
+}
+function currentSlide(n){
+	showSlide(slideIndex=n)
+}
+function showSlide(n){
+	var i;
+	var slides = document.getElementsByClassName("mySlides");
+	var dots = document.getElementsByClassName("demo");
+	var info = document.querySelector(".info");
+	if(n>slides.length){slideIndex=1};
+	if(n<1){slideIndex=slides.length};
+	for(i=0;i<slides.length;i++){
+		slides[i].style.display = "none";
+	}
+	for(i=0;i<dots.length;i++){
+		dots[i].className = dots[i].className.replace(' active',"")
+	}
+	slides[slideIndex-1].style.display = "block";
+	dots[slideIndex-1].className += " active"
+	info.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+</body>
+</html>

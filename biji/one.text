@@ -1,0 +1,14 @@
+webpack配置{
+	npm i init -y
+	cnpm i webpack -D
+	cnpm i webpack-cli -D
+	cnpm i webpack-dev-server -D
+	cnpm i html-webpack-plugin -D
+	cnpm i file-loader style-loader css-loader sass-loader -D
+	cnpm i babel-loader@7 babel-core -D
+	cnpm i babel-preset-env babel-preset-stage-0 -D
+	cnpm i babel-plugin-transforn-runtime -D
+	cnpm i vue -S
+	cnpm i vue-loader vue-router vue-template-compiler -D
+	cnpm i mint-ui -S
+}

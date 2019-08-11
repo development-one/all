@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<header>
+	<meta charser="UTF-8">
+	<title>prototype数据原型</title>
+</header>
+<body>
+	<script>
+		String.prototype.myString = function(){
+			return this.match("ab")
+		}
+		let ab = "absadabswa"
+		var x = ab.myString()
+		console.log(x)
+	</script>
+</body>	
+</html>

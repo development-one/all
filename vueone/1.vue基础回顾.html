@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">{{message}}</div>
+
+	<!-- v-bind:与标签的属性进行绑定 -->
+	<div id="app-2">
+		<span v-bind:title="message">
+			鼠标悬停几秒钟查看此处动态绑定的提示信息！
+		</span>
+	</div>
+
+	<!-- v-if=与标签进行绑定从而控制元素的显示和隐藏 -->
+	<div id="app-3" v-if="seen">
+		你现在看到我了啊
+	</div>
+	
+	<!-- v-for=来绑定数组的数据从而来渲染一个项目列表 -->
+	<div id="app-4">
+  	<ol>
+  	  <li v-for="list in lists">
+  	    {{ list.text }}
+  	  </li>
+  	</ol>
+	</div>
+
+	<!-- v-on:来绑定事件 -->
+	<div id="app-5">
+		<p  v-color="'red'">{{message}}</p>
+		<button v-on:click="aaa">点击</button>
+	</div>
+	
+	<!-- 通过v-model来实现数据的双向绑定 -->
+	<div id="app-6">
+		<p>{{message}}</p>
+		<input type="text" v-model="message" autocomplate="on">
+	</div>
+	<script>
+		Vue.directive("color",function(el,binding){
+			el.style.color = binding.value;
+		})
+		var app = new Vue({
+			el: "#app",
+			data: {
+				message: "又是新的一天哦"
+			}
+		})
+
+		var app2 = new Vue({
+			el: "#app-2",
+			data: {
+				message: "页面加载于" + new Date().toLocaleString()
+			}
+		})
+
+		var app3 = new Vue({
+			el: "#app-3",
+			data: {
+				seen: true
+			}
+		})
+
+		var app4 = new Vue({
+			el: "#app-4",
+			data: {
+				lists: [{text:"wode"},{text:"tade"},{text:"nide"}]
+			}
+		})
+
+		var app5 = new Vue({
+			el: "#app-5",
+			data: {
+				message: "hello ni hao"
+			},
+			methods: {
+				aaa:function(){
+					this.message = this.message.split("").reverse().join("")
+				}
+			}
+		})
+
+		var app6 = new Vue({
+			el: "#app-6",
+			data: {
+				message: "大傻逼你好啊"
+			}
+		})
+	</script>
+</body>
+</html>

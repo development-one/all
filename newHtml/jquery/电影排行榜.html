@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>电影排行榜</title>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<style>
+	.container{
+		width: 500px;
+		margin: 100px auto;
+		border: 1px solid black;
+		padding-bottom: 100px;
+	}
+	.container>p{
+		margin: 0;
+		width: 100%;
+		padding: 10px 10px 10px 20px;
+		box-sizing: border-box;
+		font-size: 20px;
+		font-weight: bold;
+		border-bottom: 1px dashed #ccc;
+	}
+	.content{
+		width: 100%;
+		border-bottom: 1px dashed #ccc;
+	}
+	.content:nth-of-type(-n+3) .num{
+		background: lightgreen;
+	}
+	.content span{
+		font-size: 20px;
+		margin: 8px;
+		display: inline-block;
+	}
+	.num{
+		background: #ccc;
+		padding: 5px 10px 5px 10px;
+		box-sizing: border-box;
+	}
+	.title{
+		padding-bottom: 10px;
+		justify-content:space-around;
+		display: none;
+	}
+	.title img{
+		width: 45%;
+		height: 200px;
+	}
+	.title p{
+		margin: 0;
+		width: 45%;
+		overflow: hidden;
+	}
+	.current .title{
+		display: flex;
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<p>电影排行榜</p>
+		<div class="content">
+			<span class="num">1</span>
+			<span class="name">电影名称</span>
+			<div class="title">
+				<img src="http://www.ttpaihang.com/image/vote/u140309212843628701.jpg" alt="">
+				<p>自定义列表不仅仅是一列项目，而是项目及其注释的组合。自定义列表以标签开始。每个自定义列表项以开始。每个自定义列表项的定义以开始。</p>
+			</div>
+		</div>
+		<div class="content">
+			<span class="num">2</span>
+			<span class="name">电影名称</span>
+			<div class="title">
+				<img src="http://www.ttpaihang.com/image/vote/u140309212843628701.jpg" alt="">
+				<p>自定义列表不仅仅是一列项目，而是项目及其注释的组合。自定义列表以标签开始。每个自定义列表项以开始。每个自定义列表项的定义以开始。</p>
+			</div>
+		</div>
+		<div class="content">
+			<span class="num">3</span>
+			<span class="name">电影名称</span>
+			<div class="title">
+				<img src="http://www.ttpaihang.com/image/vote/u140309212843628701.jpg" alt="">
+				<p>自定义列表不仅仅是一列项目，而是项目及其注释的组合。自定义列表以标签开始。每个自定义列表项以开始。每个自定义列表项的定义以开始。</p>
+			</div>
+		</div>
+		<div class="content">
+			<span class="num">4</span>
+			<span class="name">电影名称</span>
+			<div class="title">
+				<img src="http://www.ttpaihang.com/image/vote/u140309212843628701.jpg" alt="">
+				<p>自定义列表不仅仅是一列项目，而是项目及其注释的组合。自定义列表以标签开始。每个自定义列表项以开始。每个自定义列表项的定义以开始。</p>
+			</div>
+		</div>
+		<div class="content">
+			<span class="num">5</span>
+			<span class="name">电影名称</span>
+			<div class="title">
+				<img src="http://www.ttpaihang.com/image/vote/u140309212843628701.jpg" alt="">
+				<p>自定义列表不仅仅是一列项目，而是项目及其注释的组合。自定义列表以标签开始。每个自定义列表项以开始。每个自定义列表项的定义以开始。</p>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			$(".content").hover(function(){
+				$(this).addClass("current")
+			},
+			function(){
+				$(this).removeClass("current")
+			})
+		})
+	</script>
+</body>
+</html>

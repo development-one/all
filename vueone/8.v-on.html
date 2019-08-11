@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./2.6.7vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p v-if="hehe">{{msg}}</p>
+		<p v-else>{{msgs}}</p>
+		<button @dblclick="cli">toggle</button>
+		<input type="text" @input="hehea" ref="cc">
+	</div>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				msg: "我出来了哦",
+				msgs: "我消失了哦",
+				hehe: true,
+			},
+			methods: {
+				/*cli: function(){
+					this.hehe=!this.hehe
+				}*/
+				// 使用ES6新的语法
+				cli(){
+					this.hehe=!this.hehe
+					this.$refs.cc.value += 1
+				},
+				hehea(){
+					console.log("asd");
+				}
+			}
+		})
+	</script>
+</body>
+</html>

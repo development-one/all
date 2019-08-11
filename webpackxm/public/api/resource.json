@@ -1,0 +1,18 @@
+{
+	"statue": 0,
+	"data": {
+		"vue1": [
+			{"id":1, "title":"图片一", "imgurl":"./img/1.jpg" },
+			{"id":2, "title":"图片二", "imgurl":"./img/2.jpg" },
+			{"id":3, "title":"图片三", "imgurl":"./img/3.jpg" },
+			{"id":4, "title":"图片四", "imgurl":"./img/4.jpg" }
+		],
+		"vue2": [
+			{"id":1, "title":"图片一", "text":"盗号狗国行观后感高公安和爱狗号国华施工爱过后市" },
+			{"id":2, "title":"图片二", "text":"阿搜嘎睡个觉 更煎熬硅胶管阿三哥骄傲是国家" },
+			{"id":3, "title":"图片三", "text":"激发死哦改价格更煎熬更加熬时间干啊" },
+			{"id":4, "title":"图片四", "text":"gas爱干净赛季搞死搞奥就是干" }
+		]
+	}
+}
+

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>h5-video</title>
+	<link rel="stylesheet" href="video.css">
+	<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js">
+</script>
+</head>
+<body>
+	<div class="h5Video">
+		<video height="500">
+			<source src="F:/日剧/SP.mp4" type="video/mp4">
+		</video>
+		<div class="playControl">
+			<div class="setPlay">
+				<span class="iconfont play">&#xe604;</span>
+				<span class="iconfont full" style="font-size:26px">&#xe602;</span>
+				<span class="iconfont voice">&#xe87a;</span>
+				<div class="voiceProcess">
+					<div class="voiceBar"></div>
+					<div class="voiceCurrent"></div>
+					<div class="voiceBall"></div>
+				</div>
+			</div>
+			<div class="process">
+				<div class="bar"></div>
+				<div class="current"></div>	
+				<div class="ball"></div>
+				<div class="buffer"></div>
+			</div>
+			<div class="time">
+				<span class="nowtime">00:00:00</span>
+				/
+				<span class="alltime">00:00:00</span>
+			</div>
+		</div>
+	</div>
+	<script src="process.js"></script>
+	<script src="voiceProcess.js"></script>
+	<script>
+		$(function(){
+			var video = $("video")[0]
+			var bar = $(".bar")
+			var ball = $(".ball")
+			var current = $(".current")
+			var progress = Progress(bar,ball,current)
+			progress.progressClick(function(value){
+				video.currentTime = video.duration * value
+			});	
+			progress.progressMove(function(value){
+				if(isNaN(value)) return;
+				video.currentTime = video.duration * value
+			});
+
+			var voiceBar = $(".voiceBar")
+			var voiceBall = $(".voiceBall")
+			var voiceCurrent = $(".voiceCurrent")
+			var voice = Voice(voiceBar,voiceBall,voiceCurrent)
+			voice.VoiceClick(function(value){
+				video.volume = value 
+			});	
+			voice.VoiceMove(function(value){
+				if(isNaN(value)) return;
+				if(value<0 || value>1) return;
+				video.volume = value 
+			});
+			// 1.实现暂停和播放
+			$(".play,video").click(function(){
+				if(video.paused){
+					video.play();
+					$(".play").html("&#xe6ad;")
+				}else{
+					video.pause();
+					$(".play").html("&#xe604;")
+				}
+			})
+			// 2.实现全屏播放
+			$(".full").click(function(){
+				if(video.requestFullScreen){
+					video.requestFullScreen()
+				}else if(video.webkitRequestFullScreen){
+					video.webkitRequestFullScreen()
+				}else if(video.mozRequestFullScreen){
+					video.mozRequestFullScreen()
+				}else if(video.msRequestFullScreen){
+					video.msRequestFullScreen()
+				}
+			})
+			//封装时间方法
+			function getTime(el){
+				var hour = Math.floor(el/3600)
+					hour = hour<10 ? "0"+hour : hour
+					
+					var minute = Math.floor(el%3600/60)
+					minute = minute<10 ? "0"+minute : minute
+
+					var second = Math.floor(el%60);
+					second = second<10 ? "0"+second : second
+					return hour+":"+minute+":"+second
+			}
+			// 3.实现播放的业务逻辑
+			video.oncanplay=function(){
+				setTimeout(function(){
+					video.style.display="block";
+					var total = video.duration
+					var result = getTime(total)
+					$(".alltime").html(result)
+				},2000)	
+				video.volume = 1;	
+			}
+			video.ontimeupdate=function(){
+				var current = video.currentTime
+				var result = getTime(current)
+				$(".nowtime").html(result)
+				var percent = current/video.duration*100+"%"
+				// $(".current").css("width",percent)
+				// $(".ball").css("left",percent)
+				progress.setProgress(percent)
+			}
+
+			/*// 4.实现跳播和结束
+			$(".bar").click(function(el){
+				var offset = el.offsetX;
+				var percent = offset/$(this).width()
+				var current = percent*video.duration;
+				video.currentTime = current
+				$(".ball").css("left",offset)
+			})
+			$(".bar").mousedown(function(el){
+				var offset = el.offsetX;
+				var percent = offset/$(this).width()
+				var current = percent*video.duration;
+				video.currentTime = current
+				$(".ball").css("left",offset)
+				$("body").mousemove(function(el){
+					var offset = el.offsetX;
+					var percent = offset/$(".bar").width()
+					var current = percent*video.duration;
+					video.currentTime = current
+					$(".ball").css("left",offset)
+				})
+			})
+			$("body").mouseup(function(){
+				$("body").off("mousemove")
+			})
+			video.onended = function(){
+				setTimeout(function(){
+					video.currentTime = 0;
+					$(".play").html("&#xe604;")
+				},1000)	
+			}*/
+		})
+	</script>
+</body>
+</html>

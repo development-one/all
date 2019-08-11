@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hui-admin实例</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+  	<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+ 	<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Hui.admin</a>
+
+		<!-- Toggle/collapsibe Button -->
+		<button class="navbar-toggler" data-toggle="collapse" data-target="#collapseNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="navbar-collapse collapse " id="collapseNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item dropdown">
+					<a class="nav-link text-light dropdown-toggle" href="#" data-toggle="dropdown">新增</a>
+					<div class="dropdown-menu">
+      						<a class="dropdown-item" href="#">Link 1</a>
+      						<a class="dropdown-item" href="#">Link 2</a>
+      						<a class="dropdown-item" href="#">Link 3</a>
+   					 </div>					
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link text-light" href="#" data-toggle="dropdown">登录</a>	
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-light" href="#" data-toggle="dropdown">注册</a>	
+				</li>
+				<li class="nav-item dropdown">
+					<a href="#" class="nav-link text-light dropdown-toggle" data-toggle="dropdown">admin</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a class="dropdown-item" href="#">个人信息</a>
+						<a class="dropdown-item" href="#">切换账户</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">退出</a>
+					</div>
+				</li>
+			</ul>
+		</div>		</nav>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="list-group">
+    				<a href="#" class="list-group-item list-group-item-action" data-toggle="collapse" data-target="#demo">First item</a>
+
+    					<div class="list-group collapse" id="demo" >
+    						<a href="#" class="list-group-item list-group-item-action rounded-0">First item</a>
+    						<a href="#" class="list-group-item list-group-item-action">Second item</a>
+    						<a href="#" class="list-group-item list-group-item-action border border-bottom-0 rounded-0">Third item</a>
+ 				 		</div>
+
+    				<a href="#" class="list-group-item list-group-item-action">Second item</a>
+    				<a href="#" class="list-group-item list-group-item-action">Third item</a>
+ 				 </div>
+			</div>
+			<div class="col-md-10">
+				<ul class="nav nav-tabs">
+					<li class="nav-item">
+						<a href="#home" class="nav-link active" data-toggle="tab">Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="#menu1" class="nav-link" data-toggle="tab">Menu1</a>
+					</li>
+					<li class="nav-item">
+						<a href="#menu2" class="nav-link" data-toggle="tab">Menu2</a>
+					</li>
+				</ul>
+				<!-- tabl pans -->
+				<div class="tab-content">
+					<div id="home" class="container tab-pane  active">
+						<!-- 模态框 -->
+						<button class="btn btn-primary mt-2" data-toggle="modal" data-target="#myModal">添加用户</button>
+						<div class="modal fade" id="myModal">
+							<div class="modal-dialog">
+								<div class="modal-content">
+
+									<div class="modal-header">
+										<h5>用户添加</h5>
+									</div>
+
+									<div class="modal-body">
+									<!-- 表单 -->
+									<form action="">
+										<div class="form-group">
+											<label for="email">Email address:</label>
+											<input type="email" class="form-control" id="email">
+										</div>
+
+										<div class="form-group">
+											<label for="user">Email address:</label>
+											<input type="text" class="form-control" id="user">
+										</div>
+
+										<div class="custom-control custom-radio">
+      										<div class="custom-control custom-radio custom-control-inline">
+     											<input type="radio" class="custom-control-input" id="customRadio1" name="example1">
+     											<label class="custom-control-label" for="customRadio1">自定义单选框 1</label>
+   											 </div>
+ 											<div class="custom-control custom-radio custom-control-inline">
+     											<input type="radio" class="custom-control-input" id="customRadio1" name="example1">
+     											<label class="custom-control-label" for="customRadio1">自定义单选框 1</label>
+   											 </div>
+    									</div>
+
+
+										<button class="btn btn-danger float-right ml-2" data-dismiss="modal">取消</button>
+										<button class="btn btn-success float-right" type="submit">确认</button>			
+									</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="menu1" class="container tab-pane fade active">
+						<h3>Menu1</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+					</div>
+
+					<div id="menu2" class="container tab-pane fade active">
+						<!-- 巨幕 -->
+						<div class="jumbotron mt-2">
+							<h1>Menu2</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

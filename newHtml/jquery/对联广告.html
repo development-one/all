@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对联广告</title>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<style>
+body{
+	height: 3000px;
+}
+	.clearfix:after{
+		content: ".";
+		height: 0;
+		display: block;
+		visibility: hidden;
+		clear: both;
+	}
+	.clearfix{
+		*zoom: 1;
+	}
+	.left{
+		position: fixed;
+		top: 100px;
+		left: 0;
+	}
+	img{
+		width: 300px;
+		height: 400px;
+		display: none;
+	}
+	p{
+		margin: 0;
+		background: #ccc;
+		font-size: 40px;
+		font-weight: bold;
+		display: none;		
+	}
+	span:hover{
+		cursor: pointer;
+		color: white;
+	}
+	.right{
+		position: fixed;
+		top: 100px;
+		right: 0;
+	}
+</style>
+</head>
+<body>
+		<div class="left">
+		<img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3357782375,1727258651&fm=27&gp=0.jpg" alt="">
+		<p><span>&times;</span></p>
+	</div>
+	<div class="right" >
+		<img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3357782375,1727258651&fm=27&gp=0.jpg" alt="">
+		<p><span>&times;</span></p>
+	</div>
+	<script>
+		$(function(){
+			$(window).scroll(function(){
+				var offset = $("html,body").scrollTop();
+				if(offset>=500){
+					$("img,p").show(1000)
+				}else{
+					$("img,p").stop().hide(1000)
+				}
+			})
+		})
+	</script>
+</body>
+</html>

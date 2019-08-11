@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新浪微博</title>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+	<style>
+	.clearfix:after{
+		content: ".";
+		display: block;
+		height: 0;
+		visibility: hidden;
+		clear: both;
+	}
+		.container{
+			width: 600px;
+			margin: 100px auto;
+			text-align: center;
+		}
+		.content{
+			border-bottom: 1px solid #ccc;
+		}
+		textarea{
+			width: 70%;
+			outline: none;
+			resize: none;
+			padding: 10px;
+			box-sizing: border-box;
+			font-size: 20px;
+		}
+		textarea:focus{
+			border: 1px solid lightblue;
+		}
+		input[type="button"]{
+			width: 100px;
+			height: 40px;
+			cursor: pointer;
+		}
+		.comment{
+			margin-top: 10px;
+		}
+		.list{
+			border-bottom: 1px solid #ccc;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+		.list p{
+			margin: 0 0 10px 0;
+			text-align: left;
+			font-size: 20px;
+		}
+		.list span{
+			float: left;
+		}
+		.list a{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+			<textarea name="" id="" cols="10" rows="5" placeholder="啦啊啊啦"></textarea>	
+			<input type="button" disabled value="发布">
+		</div>	
+		<div class="comment">
+			<div class="list clearfix">
+				<p>敬意的好处敬意的好处敬意的好处敬意的好处敬意的好处敬意的好处敬意的好处敬意的好处敬意的好处敬意的好处</p>
+				<span>2018-3-12 10:12:12</span>
+				<a href="javascript:;">删除</a>
+			</div>
+			<div class="list clearfix">
+				<p>敬意的好处</p>
+				<span>2018-3-12 10:12:12</span>
+				<a href="javascript:;">删除</a>
+			</div>
+			<div class="list clearfix">
+				<p>敬意的好处</p>
+				<span>2018-3-12 10:12:12</span>
+				<a href="javascript:;">删除</a>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			// 监听按钮的点击
+			$('textarea').on('propertychange input',function(){
+				if($(this).val().length>0){
+					$("input").attr("disabled",false)
+				}else{
+					$("input").attr("disabled",true)
+				}
+			})
+			// 创建节点方法
+			$("input").click(function(){
+				var text = $("textarea").val();
+				var content = createEle(text);
+				$(".comment").prepend(content);
+			})
+			function createEle(text){
+				var txt = $("<div class=\"list clearfix\">\n" +
+				" <p>"+text+"</p>\n" +
+				" <span>"+formate()+"</span>\n" +
+				" <a href=\"javascript:;\">删除</a>\n" +
+			" </div>")
+			return txt;
+			}
+			//生成时间方法
+			function formate(){
+				var data = new Date();
+				var dataMinutes;
+				var dataSeconds;
+
+				dataMinutes = data.getMinutes()<10 ? "0"+data.getMinutes() : data.getMinutes()
+				dataSeconds = data.getSeconds()<10 ? "0"+data.getSeconds() : data.getSeconds()
+							
+				var arr = [data.getFullYear()+"-",data.getMonth()+1+"-",
+				data.getDate()+" ",
+				data.getHours()+":",
+				dataMinutes+":",
+				dataSeconds];
+				return arr.join("");
+			}
+			//删除节点
+			$("body").delegate("a","click",function(){
+				$(this).parent().remove();
+			})
+		})
+	</script>
+</body>
+</html>

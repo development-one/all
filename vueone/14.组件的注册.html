@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="2.6.7vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<com></com>
+		<com2></com2>
+	</div>
+	<template id="tm1">
+		<div>
+			<h1>你好</h1>
+			<p>今天天气很好哦</p>
+		</div>
+	</template>
+	<template id="tm2">
+		<div>
+			<h1>你好我是组件二哦</h1>
+			<p>今天天气也很好哦</p>
+		</div>
+	</template>
+	<script>
+		Vue.component("com",{
+			template: "#tm1"
+		})
+		var vm = new Vue({
+			el: "#app",
+			data: {
+
+			},
+			components:{
+				com2: {
+					template: "#tm2"
+				}
+			}
+		})
+	</script>
+</body>
+</html>
