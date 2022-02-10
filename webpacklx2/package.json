@@ -28,7 +28,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "vue": "^2.6.10",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.2"
